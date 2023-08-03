@@ -17,7 +17,7 @@ const IPInput = () => {
                     borderRadius: "1rem 0 0 1rem",
                     py: 1.3,
                     px: 3,
-                    minWidth: "17rem",
+                    minWidth: "10rem",
                     width: "100%",
                     border: "none",
                     fontSize: { xs: "1.2rem", sm: "1.2rem" },

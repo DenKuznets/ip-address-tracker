@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Stack, Divider } from "@mui/material";
 import axios from "axios";
 import { useQuery } from "react-query";
 import ResultField from "./ResultField";
@@ -17,15 +17,22 @@ const SearchResult = () => {
         <Stack
             sx={{
                 borderRadius: "1rem",
-                gap: "1.05rem",
-                p: 3,
+                gap: { xs: "1.05rem", md: "3rem" },
+                p: { xs: 3, sm: 4.55 },
                 alignItems: "center",
-                maxWidth: "70rem",
-                flexDirection: { sm: "row" },
-                justifyContent: { sm: "center" },
+                maxWidth: { sm: "35rem", md: "70rem" },
+                flexDirection: { md: "row" },
+                justifyContent: { sm: "flex-start" },
             }}
             width={"100%"}
             bgcolor={"white"}
+            divider={
+                <Divider
+                    sx={{ borderColor: "hsl(0, 0%, 74.50980392156863%)" }}
+                    orientation="vertical"
+                    flexItem
+                />
+            }
         >
             <ResultField
                 resultText={{
