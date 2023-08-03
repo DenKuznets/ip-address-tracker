@@ -1,17 +1,18 @@
 import { Stack, Divider } from "@mui/material";
-import axios from "axios";
-import { useQuery } from "react-query";
 import ResultField from "./ResultField";
 
-const SearchResult = () => {
-    const getData = () => axios.get("http://localhost:3000/data");
-    const { data, isLoading, error } = useQuery({
-        queryKey: ["ipdata"],
-        queryFn: () => getData(),
-    });
-    if (isLoading) return <div>"Loading..."</div>;
-    if (error instanceof Error)
-        return <div>"An error has occurred: " + error.message</div>;
+interface Props {
+    data: {
+        ip: string;
+        country: string;
+        region: string;
+        timezone: string;
+        isp: string;
+    };
+}
+
+const SearchResult: React.FC<Props> = ({ data }) => {
+    // console.log({...props});
 
     return (
         <Stack
@@ -37,25 +38,25 @@ const SearchResult = () => {
             <ResultField
                 resultText={{
                     header: "IP ADDRESS",
-                    text: data?.data.ip,
+                    text: data.ip,
                 }}
             />
             <ResultField
                 resultText={{
                     header: "LOCATION",
-                    text: `${data?.data.location.region} , ${data?.data.location.country}`,
+                    text: `${data.region} , ${data.country}`,
                 }}
             />
             <ResultField
                 resultText={{
                     header: "TIMEZONE",
-                    text: data?.data.location.timezone,
+                    text: data.timezone,
                 }}
             />
             <ResultField
                 resultText={{
                     header: "ISP",
-                    text: data?.data.isp,
+                    text: data.isp,
                 }}
             />
         </Stack>

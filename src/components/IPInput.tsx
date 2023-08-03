@@ -1,6 +1,13 @@
 import { IconButton, InputBase, Stack } from "@mui/material";
+import { useState } from "react";
 
-const IPInput = () => {
+interface Props {
+    handleInput: (userInput: string) => void;
+}
+
+const IPInput: React.FC<Props> = (props) => {
+    const [text, setText] = useState("");
+
     return (
         <Stack
             sx={{
@@ -12,6 +19,8 @@ const IPInput = () => {
             direction={"row"}
         >
             <InputBase
+                value={text}
+                onChange={(e) => setText(e.target.value)}
                 sx={{
                     bgcolor: "white",
                     borderRadius: "1rem 0 0 1rem",
@@ -26,6 +35,7 @@ const IPInput = () => {
                 placeholder="Search for any IP address or domain"
             />
             <IconButton
+                onClick={() => props.handleInput(text)}
                 sx={{
                     bgcolor: "black",
                     borderRadius: "0 1rem 1rem 0",

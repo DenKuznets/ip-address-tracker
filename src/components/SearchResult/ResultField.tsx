@@ -32,6 +32,7 @@ const ResultField: React.FC<Props> = (props) => {
                 sx={{
                     fontSize: { sm: "1.8rem", xs: "1.4rem" },
                     fontWeight: "500",
+                    minHeight:'3rem',
                 }}
                 variant="body1"
             >

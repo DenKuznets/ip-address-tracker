@@ -13,12 +13,8 @@ const theme = createTheme({
                 fontSize: "1.6rem",
             },
         },
-        body1: {
-            
-        },
-        body2: {
-            
-        },
+        body1: {},
+        body2: {},
     },
 });
 
