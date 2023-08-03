@@ -10,10 +10,7 @@ const Main = () => {
         <QueryClientProvider client={queryClient}>
             <Stack
                 sx={{
-                    p: 4,
-                    "@media (max-width:425px)": {
-                        p: 3,
-                    },
+                    p: { xs: 3, sm: 4 },
                 }}
                 position={"fixed"}
                 top={0}
@@ -23,10 +20,7 @@ const Main = () => {
             >
                 <Typography
                     sx={{
-                        mb: 3,
-                        "@media (max-width:425px)": {
-                            mb: 4,
-                        },
+                        mb: { xs: 4, sm: 3 },
                     }}
                     color={"white"}
                     variant="h1"

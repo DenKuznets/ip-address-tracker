@@ -9,14 +9,14 @@ const theme = createTheme({
         h1: {
             fontSize: "2rem",
             fontWeight: "500",
-            "@media (max-width:425px)": {
+            "@media (max-width:600px)": {
                 fontSize: "1.6rem",
             },
         },
         body1: {
             fontSize: "1.8rem",
             fontWeight: "500",
-            "@media (max-width:425px)": {
+            "@media (max-width:600px)": {
                 fontSize: "1.4rem",
             },
         },
@@ -24,7 +24,7 @@ const theme = createTheme({
             fontSize: "1.1rem",
             fontWeight: "700",
             letterSpacing: "1.5px",
-            "@media (max-width:425px)": {
+            "@media (max-width:600px)": {
                 fontSize: "0.7rem",
             },
         },

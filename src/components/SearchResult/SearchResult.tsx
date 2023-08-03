@@ -17,9 +17,12 @@ const SearchResult = () => {
         <Stack
             sx={{
                 borderRadius: "1rem",
-                gap: '1.05rem',
+                gap: "1.05rem",
                 p: 3,
-                alignItems: 'center',
+                alignItems: "center",
+                maxWidth: "70rem",
+                flexDirection: { sm: "row" },
+                justifyContent: { sm: "center" },
             }}
             width={"100%"}
             bgcolor={"white"}
