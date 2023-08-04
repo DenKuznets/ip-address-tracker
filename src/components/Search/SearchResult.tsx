@@ -1,18 +1,9 @@
 import { Stack, Divider } from "@mui/material";
 import ResultField from "./ResultField";
+import { useAppStore } from "../../AppStore";
 
-interface Props {
-    data: {
-        ip: string;
-        country: string;
-        region: string;
-        timezone: string;
-        isp: string;
-    };
-}
-
-const SearchResult: React.FC<Props> = ({ data }) => {
-
+const SearchResult = () => {
+    const data = useAppStore((state) => state.data);
     return (
         <Stack
             sx={{
