@@ -12,7 +12,6 @@ interface Props {
 }
 
 const SearchResult: React.FC<Props> = ({ data }) => {
-    // console.log({...props});
 
     return (
         <Stack

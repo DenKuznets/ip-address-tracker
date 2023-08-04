@@ -1,13 +1,13 @@
 import { Stack, Typography } from "@mui/material";
 import IPInput from "./IPInput";
-import SearchResult from "./SearchResult/SearchResult";
+import SearchResult from "./SearchResult";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const regexDomain =
     /^((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}.(xn--)?([a-z0-9-]{1,61}|[a-z0-9-]{1,30}.[a-z]{2,})$/;
 
-// const getData = (input: string) => axios.get("http://localhost:3000/data");
+// const getData = () => axios.get("http://localhost:3000/data");
 
 // get data from geo API
 const getData = (input: string) => {
@@ -28,7 +28,7 @@ const mockData = {
     isp: "loading",
 };
 
-const Main = () => {
+const Search = () => {
     const [input, setInput] = useState("");
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(mockData);
@@ -67,6 +67,7 @@ const Main = () => {
             left={0}
             alignItems={"center"}
             width={"100%"}
+            zIndex={1000}
         >
             <Typography
                 sx={{
@@ -83,4 +84,4 @@ const Main = () => {
     );
 };
 
-export default Main;
+export default Search;

@@ -1,7 +1,7 @@
 import { Box, CssBaseline, createTheme, ThemeProvider } from "@mui/material";
 import BlueBox from "./components/BlueBox";
 import Map from "./components/Map";
-import Main from "./components/Main";
+import Search from "./components/Search/Search";
 
 const theme = createTheme({
     typography: {
@@ -13,8 +13,6 @@ const theme = createTheme({
                 fontSize: "1.6rem",
             },
         },
-        body1: {},
-        body2: {},
     },
 });
 
@@ -25,7 +23,7 @@ function App() {
                 <CssBaseline />
                 <BlueBox />
                 <Map />
-                <Main />
+                <Search />
             </ThemeProvider>
         </Box>
     );
