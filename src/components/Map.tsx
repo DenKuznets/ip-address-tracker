@@ -7,8 +7,26 @@ import {
     TileLayer,
     useMapEvents,
 } from "react-leaflet";
+import { useAppStore } from "../AppStore";
+import axios from "axios";
+
+const getLatLng = (country: string, region: string) => {
+  console.log(country, region);
+    return axios.get(
+        `https://nominatim.openstreetmap.org/search?q=${region}+${country}&format=json&polygon=1&addressdetails=1`
+    );
+};
+
+// axios.get(
+//     `https://nominatim.openstreetmap.org/search?q=Moskva+RU&format=json&polygon=1&addressdetails=1`
+// );
 
 const Map = () => {
+    const data = useAppStore((state) => state.data);
+    // console.log({data});
+    const [loading, setLoading] = useState(true);
+    const [latlng, setLatlng] = useState("");
+
     function LocationMarker() {
         const [position, setPosition] = useState(null);
 
@@ -21,8 +39,26 @@ const Map = () => {
         });
 
         useEffect(() => {
-            map.locate();
-        }, []);
+            if (loading) {
+                getLatLng(data.country, data.region).then((result) => {
+                    // console.log(result);
+                    const newLatlng = [result.data[0].lat, result.data[0].lon];
+                    // console.log({ newLatlng });
+                    setLatlng(newLatlng);
+                });
+            }
+
+            return () => {
+                setLoading(false);
+            };
+        }, [loading]);
+
+        useEffect(() => {
+            if (latlng) {
+                map.setView(latlng);
+            }
+            // map.locate();
+        }, [map, latlng]);
 
         return position === null ? null : (
             <Marker position={position}>
