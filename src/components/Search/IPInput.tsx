@@ -1,10 +1,12 @@
 import { IconButton, InputBase, Stack } from "@mui/material";
 import { useAppStore } from "../../AppStore";
+import { useRef } from "react";
 
 const IPInput = () => {
     // const [text, setText] = useState("");
-    const input = useAppStore((state) => state.input);
+    // const input = useAppStore((state) => state.input);
     const setInput = useAppStore((state) => state.setInput);
+    const inputBaseRef = useRef<HTMLInputElement>(null);
 
     return (
         <Stack
@@ -17,8 +19,9 @@ const IPInput = () => {
             direction={"row"}
         >
             <InputBase
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
+                // value={input}
+                // onChange={(e) => setInput(e.target.value)}
+                ref={inputBaseRef}
                 sx={{
                     bgcolor: "white",
                     borderRadius: "1rem 0 0 1rem",
@@ -33,7 +36,12 @@ const IPInput = () => {
                 placeholder="Search for any IP address or domain"
             />
             <IconButton
-                onClick={() => setInput(input)}
+                onClick={() => {
+                    const input = inputBaseRef?.current?.querySelector("input");
+                    if (input) {
+                        setInput(input.value);
+                    }
+                }}
                 sx={{
                     bgcolor: "black",
                     borderRadius: "0 1rem 1rem 0",

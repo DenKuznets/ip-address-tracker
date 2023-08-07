@@ -9,6 +9,7 @@ import {
 } from "react-leaflet";
 import { useAppStore } from "../../AppStore";
 import axios from "axios";
+import { googleApi } from "../../../googleApi";
 
 const getLatLng = (country: string, region: string) => {
     // console.log(country, region);
@@ -16,7 +17,7 @@ const getLatLng = (country: string, region: string) => {
     //     `https://nominatim.openstreetmap.org/search?q=${region}+${country}&format=json&polygon=1&addressdetails=1`
     // );
     return axios.get(
-        `https://nominatim.openstreetmap.org/search?q=Moskva+RU&format=json&polygon=1&addressdetails=1`
+        `https://api.geoapify.com/v1/geocode/search?text=${country},${region}&apiKey=65dbe9559e124478be219db52474bfff`
     );
 };
 
@@ -41,13 +42,18 @@ const Map = () => {
 
     useEffect(() => {
         if (loading && data) {
-            console.log("getting latlang", data);
+            // console.log("getting latlang", data);
             getLatLng(data.country, data.region)
                 .then((result) => {
-                    console.log("result", result);
+                    // console.log("result", result.data);
+                    // console.log(
+                    //     "result",
+                    //     result.data.features[0].properties.lat,
+                    //     result.data.features[0].properties.lon
+                    // );
                     const newLatlng = {
-                        lat: result.data[0].lat,
-                        lng: result.data[0].lon,
+                        lat: result.data.features[0].properties.lat,
+                        lng: result.data.features[0].properties.lon,
                     };
                     // console.log({ newLatlng });
                     setLatlng(newLatlng);
@@ -62,10 +68,7 @@ const Map = () => {
         };
     }, [data, loading]);
 
-    // map.setView(latlng)
-    // где взять latlng?
-    // https://nominatim.openstreetmap.org/search?q=sankt-peterburg+ru&format=json&polygon=1&addressdetails=1
-    console.log("latlng", latlng);
+   
     return (
         <Box bgcolor={"lightgreen"} height={"55vh"}>
             {latlng ? (
