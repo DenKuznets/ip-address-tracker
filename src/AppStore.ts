@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { mockData } from "../utils";
+// import { mockData } from "../utils";
 import { combine } from "zustand/middleware";
 
 interface DataType {
@@ -13,7 +13,7 @@ interface DataType {
 export const useAppStore = create(
     combine(
         {
-            data: mockData,
+            data: null,
             input: "",
             loading: true,
         },

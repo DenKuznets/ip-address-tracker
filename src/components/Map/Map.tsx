@@ -11,19 +11,18 @@ import { useAppStore } from "../../AppStore";
 import axios from "axios";
 
 const getLatLng = (country: string, region: string) => {
-    console.log(country, region);
+    // console.log(country, region);
+    // return axios.get(
+    //     `https://nominatim.openstreetmap.org/search?q=${region}+${country}&format=json&polygon=1&addressdetails=1`
+    // );
     return axios.get(
-        `https://nominatim.openstreetmap.org/search?q=${region}+${country}&format=json&polygon=1&addressdetails=1`
+        `https://nominatim.openstreetmap.org/search?q=Moskva+RU&format=json&polygon=1&addressdetails=1`
     );
 };
 
-// axios.get(
-//     `https://nominatim.openstreetmap.org/search?q=Moskva+RU&format=json&polygon=1&addressdetails=1`
-// );
-
 const Map = () => {
     const data = useAppStore((state) => state.data);
-    // console.log({data});
+    // console.log(data);
     const [loading, setLoading] = useState(true);
     const [latlng, setLatlng] = useState("");
     const [position, setPosition] = useState(null);
@@ -37,33 +36,36 @@ const Map = () => {
     // });
 
     useEffect(() => {
-        if (loading) {
-            getLatLng(data.country, data.region).then((result) => {
-                // console.log(result);
-                const newLatlng = {
-                    lat: result.data[0].lat,
-                    lng: result.data[0].lon,
-                };
-                // console.log({ newLatlng });
-                setLatlng(newLatlng);
-            });
+        if (data) setLoading(true);
+    }, [data]);
+
+    useEffect(() => {
+        if (loading && data) {
+            console.log("getting latlang", data);
+            getLatLng(data.country, data.region)
+                .then((result) => {
+                    console.log("result", result);
+                    const newLatlng = {
+                        lat: result.data[0].lat,
+                        lng: result.data[0].lon,
+                    };
+                    // console.log({ newLatlng });
+                    setLatlng(newLatlng);
+                })
+                .catch((e) => {
+                    console.log("error", e);
+                });
         }
 
         return () => {
             setLoading(false);
         };
-    }, [loading]);
-
-    // useEffect(() => {
-    //     if (latlng) {
-    //         map.setView(latlng);
-    //     }
-    // }, [map, latlng]);
+    }, [data, loading]);
 
     // map.setView(latlng)
     // где взять latlng?
     // https://nominatim.openstreetmap.org/search?q=sankt-peterburg+ru&format=json&polygon=1&addressdetails=1
-
+    console.log("latlng", latlng);
     return (
         <Box bgcolor={"lightgreen"} height={"55vh"}>
             {latlng ? (
