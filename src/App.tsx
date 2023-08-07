@@ -7,13 +7,10 @@ import { getData, theme } from "../utils";
 import { useAppStore } from "./AppStore";
 
 function App() {
-    // const [input, setInput] = useState("");
-    // const [loading, setLoading] = useState(true);
-    // const [data, setData] = useState(mockData);
     const loading = useAppStore((state) => state.loading);
-    const setLoading = useAppStore((state)=> state.setLoading);
+    const setLoading = useAppStore((state) => state.setLoading);
     const input = useAppStore((state) => state.input);
-    const setData = useAppStore((state)=> state.setData);
+    const setData = useAppStore((state) => state.setData);
 
     useEffect(() => {
         if (loading) {
@@ -39,7 +36,7 @@ function App() {
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <BlueBox />
-                <Map />
+                {/* <Map /> */}
                 <Search />
             </ThemeProvider>
         </Box>
