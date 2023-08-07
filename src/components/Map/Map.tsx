@@ -11,16 +11,10 @@ import { useAppStore } from "../../AppStore";
 import axios from "axios";
 import { googleApi } from "../../../googleApi";
 
-const getLatLng = (country: string, region: string) => {
-    console.log(country, region);
 
-    return axios.get(
-        `https://api.geoapify.com/v1/geocode/search?text=${country},${region}&apiKey=${googleApi}`
-    );
-};
 
 const Map = () => {
-    const data = useAppStore((state) => state.data);
+    const data = useAppStore((state) => state.setIpDomainGeoData);
     // console.log(data);
     const [latlng, setLatlng] = useState("");
     const loading = useAppStore((state) => state.loading);

@@ -4,7 +4,7 @@ import SearchResult from "./SearchResult";
 import { useAppStore } from "../../AppStore";
 
 const Search = () => {
-    const data = useAppStore((state) => state.data);
+    const data = useAppStore((state) => state.setIpDomainGeoData);
 
     return (
         <Stack

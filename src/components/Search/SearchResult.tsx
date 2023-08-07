@@ -3,7 +3,7 @@ import ResultField from "./ResultField";
 import { useAppStore } from "../../AppStore";
 
 const SearchResult = () => {
-    const data = useAppStore((state) => state.data);
+    const data = useAppStore((state) => state.setIpDomainGeoData);
     return (
         <Stack
             sx={{

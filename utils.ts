@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material";
 import axios from "axios";
+import { googleApi } from "./googleApi";
 
 export const mockData = {
     ip: "loading",
@@ -13,7 +14,7 @@ export const mockData = {
 // const getData = () => axios.get("http://localhost:3000/data");
 
 // get data from geo API
-export const getData = (input: string) => {
+export const getGeoData = (input: string) => {
     const regexDomain =
         /^((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}.(xn--)?([a-z0-9-]{1,61}|[a-z0-9-]{1,30}.[a-z]{2,})$/;
 
@@ -38,3 +39,11 @@ export const theme = createTheme({
         },
     },
 });
+
+export const getLatLng = (country: string, region: string) => {
+    console.log(country, region);
+
+    return axios.get(
+        `https://api.geoapify.com/v1/geocode/search?text=${country},${region}&apiKey=${googleApi}`
+    );
+};

@@ -13,13 +13,13 @@ interface DataType {
 export const useAppStore = create(
     combine(
         {
-            data: null,
+            ipDomainGeoData: null,
             input: "",
             loading: true,
         },
         (set) => ({
-            setData: (dataObj: DataType) =>
-                set((state) => ({ ...state, data: dataObj })),
+            setIpDomainGeoData: (dataObj: DataType) =>
+                set((state) => ({ ...state, ipDomainGeoData: dataObj })),
             setInput: (newInput: string) =>
                 set((state) => ({ ...state, input: newInput })),
             setLoading: (bool: boolean) =>
