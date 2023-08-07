@@ -24,6 +24,7 @@ function App() {
     useEffect(() => {
         if (loading) {
             getData(input).then((result) => {
+                console.log(result.data);
                 const data = {
                     ip: result.data.ip,
                     country: result.data.location.country,
@@ -44,7 +45,7 @@ function App() {
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <BlueBox />
-                <Map />
+                {/* <Map /> */}
                 <Search />
             </ThemeProvider>
         </Box>
