@@ -6,6 +6,7 @@ const IPInput = () => {
     // const [text, setText] = useState("");
     // const input = useAppStore((state) => state.input);
     const setInput = useAppStore((state) => state.setInput);
+    const setLoading = useAppStore((state) => state.setLoading);
     const inputBaseRef = useRef<HTMLInputElement>(null);
 
     return (
@@ -40,6 +41,7 @@ const IPInput = () => {
                     const input = inputBaseRef?.current?.querySelector("input");
                     if (input) {
                         setInput(input.value);
+                        setLoading(true);
                     }
                 }}
                 sx={{

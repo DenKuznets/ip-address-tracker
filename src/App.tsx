@@ -11,20 +11,14 @@ function App() {
     // const [loading, setLoading] = useState(true);
     // const [data, setData] = useState(mockData);
     const loading = useAppStore((state) => state.loading);
-    const input = useAppStore((state) => state.input);
     const setLoading = useAppStore((state)=> state.setLoading);
+    const input = useAppStore((state) => state.input);
     const setData = useAppStore((state)=> state.setData);
-
-    useEffect(() => {
-        if (input) {
-            setLoading(true);
-        }
-    }, [input]);
 
     useEffect(() => {
         if (loading) {
             getData(input).then((result) => {
-                // console.log(result.data);
+                console.log(result.data);
                 const data = {
                     ip: result.data.ip,
                     country: result.data.location.country,
