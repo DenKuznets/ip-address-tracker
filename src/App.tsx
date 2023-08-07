@@ -1,6 +1,6 @@
 import { Box, CssBaseline, ThemeProvider } from "@mui/material";
 import BlueBox from "./components/BlueBox";
-import Map from "./components/Map";
+import Map from "./components/Map/Map";
 import Search from "./components/Search/Search";
 import { useEffect } from "react";
 import { getData, theme } from "../utils";
