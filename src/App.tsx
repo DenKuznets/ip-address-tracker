@@ -24,9 +24,10 @@ function App() {
                 isp: geoData.data.isp,
             });
             const latlangData = await getLatLng(
+                geoData.data.location.region,
                 geoData.data.location.country,
-                geoData.data.location.region
             );
+            console.log(latlangData);
             setLatlng({
                 lat: latlangData.data.features[0].properties.lat,
                 lng: latlangData.data.features[0].properties.lon,
