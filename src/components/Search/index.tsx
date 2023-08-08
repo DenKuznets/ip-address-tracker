@@ -6,7 +6,7 @@ const Search = () => {
     return (
         <Stack
             sx={{
-                p: { xs: 3, sm: 4 },
+                p: { xs: 3, md: 4 },
             }}
             position={"fixed"}
             top={0}
@@ -17,7 +17,7 @@ const Search = () => {
         >
             <Typography
                 sx={{
-                    mb: { xs: 4, sm: 3 },
+                    mb: { xs: 4, md: 3 },
                 }}
                 color={"white"}
                 variant="h1"

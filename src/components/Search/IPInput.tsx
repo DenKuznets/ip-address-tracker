@@ -31,7 +31,7 @@ const IPInput = () => {
         <Stack
             sx={{
                 maxWidth: "35rem",
-                mb: { xs: "1.4rem", sm: "3rem" },
+                mb: { xs: "1.4rem", md: "3rem" },
             }}
             justifyContent={"center"}
             width={"100%"}

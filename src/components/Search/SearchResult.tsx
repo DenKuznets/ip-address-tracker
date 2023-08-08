@@ -10,7 +10,7 @@ const SearchResult = () => {
             sx={{
                 borderRadius: "1rem",
                 gap: { xs: "0", md: "3rem" },
-                p: { xs: 3, sm: 4.55 },
+                p: { xs: 3, md: 4.55 },
                 alignItems: "center",
                 maxWidth: { sm: "35rem", md: "70rem" },
                 flexDirection: { md: "row" },

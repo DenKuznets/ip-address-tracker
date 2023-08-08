@@ -11,14 +11,14 @@ const ResultField: React.FC<Props> = (props) => {
     return (
         <Stack
             sx={{
-                alignItems: { xs: "center", sm: "flex-start" },
+                alignItems: { xs: "center", md: "flex-start" },
                 gap: "0.1rem",
             }}
             bgcolor={""}
         >
             <Typography
                 sx={{
-                    fontSize: { xs: "0.7rem", sm: "0.83rem" },
+                    fontSize: { xs: "0.7rem", md: "0.83rem" },
                     // fontSize: "0.7rem",
                     fontWeight: "700",
                     letterSpacing: "1.5px",
@@ -30,9 +30,9 @@ const ResultField: React.FC<Props> = (props) => {
             </Typography>
             <Typography
                 sx={{
-                    fontSize: { sm: "1.8rem", xs: "1.4rem" },
+                    fontSize: { xs: "1.4rem", md: "1.8rem" },
                     fontWeight: "500",
-                    minHeight:'3rem',
+                    minHeight: "3rem",
                 }}
                 variant="body1"
             >
