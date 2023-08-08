@@ -19,12 +19,20 @@ export const getGeoData = (input: string) => {
         /^((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}.(xn--)?([a-z0-9-]{1,61}|[a-z0-9-]{1,30}.[a-z]{2,})$/;
 
     return regexDomain.test(input)
-        ? axios.get(
-              `https://geo.ipify.org/api/v2/country?apiKey=at_z9AppVjUfNvHRixRz1uUngxUy6A1h&domain=${input}`
-          )
-        : axios.get(
-              `https://geo.ipify.org/api/v2/country?apiKey=at_z9AppVjUfNvHRixRz1uUngxUy6A1h&ipAddress=${input}`
-          );
+        ? axios
+              .get(
+                  `https://geo.ipify.org/api/v2/country?apiKey=at_z9AppVjUfNvHRixRz1uUngxUy6A1h&domain=${input}`
+              )
+              .catch((e) => {
+                  console.log("error", e.code, "no such domain");
+              })
+        : axios
+              .get(
+                  `https://geo.ipify.org/api/v2/country?apiKey=at_z9AppVjUfNvHRixRz1uUngxUy6A1h&ipAddress=${input}`
+              )
+              .catch((e) => {
+                  console.log("error", e.code, "no such ip");
+              });
 };
 
 export const theme = createTheme({

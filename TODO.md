@@ -1,2 +1,3 @@
 ошибки typescript
-map latlang type
+ошибки api Запросов
+ip regex
