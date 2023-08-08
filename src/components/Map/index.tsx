@@ -17,6 +17,7 @@ const Map = () => {
                     // center={{ lat: 51.505, lng: -0.09 }}
                     center={{ lat: geoData.lat, lng: geoData.lng }}
                     zoom={13}
+                    zoomControl={false}
                     scrollWheelZoom={true}
                     style={{ height: "100%" }}
                 >

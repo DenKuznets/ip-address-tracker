@@ -5,7 +5,7 @@ import {
 const BlueBox = () => {
     return (
         <Box
-            bgcolor="red"
+            bgcolor="lightblue"
             sx={{
                 backgroundImage: {
                     xs: "url('./images/pattern-bg-mobile.png')",
