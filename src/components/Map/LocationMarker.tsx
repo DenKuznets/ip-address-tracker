@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { Marker, Popup, useMapEvents } from "react-leaflet";
+import { Marker, Popup, useMap } from "react-leaflet";
 import { useAppStore } from "../../AppStore";
 
 function LocationMarker() {
-    const [position, setPosition] = useState(null);
-    
     const latlng = useAppStore((state) => state.latlng);
+    const [position, setPosition] = useState(latlng);
+    const map = useMap();
 
-    const map = useMapEvents({
-        locationfound(e) {
-            console.log(e);
-            setPosition(e.latlng);
-            map.flyTo(e.latlng, map.getZoom());
-        },
-    });
-    
-    map.setView(latlng);
+    useEffect(() => {
+        setPosition(latlng);
+        // мгновенное перемещение
+        // map.setView(latlng)
+
+        // перемещение с анимацией перелета
+        map.flyTo(latlng);
+    }, [latlng, map]);
 
     return position === null ? null : (
         <Marker position={position}>

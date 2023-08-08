@@ -1,14 +1,10 @@
 import { Box, Stack } from "@mui/material";
-import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { useAppStore } from "../../AppStore";
 import LocationMarker from "./LocationMarker";
 
 const Map = () => {
     const latlng = useAppStore((state) => state.latlng);
-    // console.log(latlng);
-    
-
-    if (!latlng) return <div>Loading...</div>;
     return (
         <Box bgcolor={"lightgreen"} height={"55vh"}>
             {latlng ? (
