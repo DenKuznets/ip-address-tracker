@@ -10,12 +10,18 @@ interface DataType {
     isp: string;
 }
 
+interface LatLngType {
+    lat: number;
+    lng: number;
+}
+
 export const useAppStore = create(
     combine(
         {
             ipDomainGeoData: null,
             input: "",
             loading: true,
+            latlng: null,
         },
         (set) => ({
             setIpDomainGeoData: (dataObj: DataType) =>
@@ -24,6 +30,8 @@ export const useAppStore = create(
                 set((state) => ({ ...state, input: newInput })),
             setLoading: (bool: boolean) =>
                 set((state) => ({ ...state, loading: bool })),
+            setLatlng: (newLatlng: LatLngType) =>
+                set((state) => ({ ...state, latlng: newLatlng })),
         })
     )
 );

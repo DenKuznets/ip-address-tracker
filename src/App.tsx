@@ -11,6 +11,7 @@ function App() {
     const setLoading = useAppStore((state) => state.setLoading);
     const input = useAppStore((state) => state.input);
     const setIpDomainGeoData = useAppStore((state) => state.setIpDomainGeoData);
+    const setLatlng = useAppStore((state) => state.setLatlng);
 
     useEffect(() => {
         async function getAPIData() {
@@ -27,23 +28,12 @@ function App() {
                 geoData.data.location.country,
                 geoData.data.location.region
             );
-            console.log(
-                latlangData.data.features[0].properties.lat,
-                latlangData.data.features[0].properties.lon
-            );
+            setLatlng({
+                lat: latlangData.data.features[0].properties.lat,
+                lng: latlangData.data.features[0].properties.lon,
+            });
         }
         if (loading) {
-            // getGeoData(input).then((result) => {
-            //     // console.log(result.data);
-            //     const data = {
-            //         ip: result.data.ip,
-            //         country: result.data.location.country,
-            //         region: result.data.location.region,
-            //         timezone: result.data.location.timezone,
-            //         isp: result.data.isp,
-            //     };
-            //     setData(data);
-            // });
             getAPIData();
         }
 
@@ -56,7 +46,7 @@ function App() {
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <BlueBox />
-                {/* <Map /> */}
+                <Map />
                 <Search />
             </ThemeProvider>
         </Box>

@@ -4,8 +4,8 @@ import SearchResult from "./SearchResult";
 import { useAppStore } from "../../AppStore";
 
 const Search = () => {
-    const data = useAppStore((state) => state.setIpDomainGeoData);
-
+    const data = useAppStore((state) => state.ipDomainGeoData);
+    console.log('data in Search', data);
     return (
         <Stack
             sx={{
@@ -28,7 +28,7 @@ const Search = () => {
                 IP Address Tracker
             </Typography>
             <IPInput />
-            {data ? <SearchResult /> : <div>"Loading..."</div>}
+            <SearchResult />
         </Stack>
     );
 };

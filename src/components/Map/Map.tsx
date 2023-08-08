@@ -1,46 +1,10 @@
 import { Box, Stack } from "@mui/material";
-import { useEffect, useState } from "react";
-import {
-    MapContainer,
-    Marker,
-    Popup,
-    TileLayer,
-    useMapEvents,
-} from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import { useAppStore } from "../../AppStore";
-import axios from "axios";
-import { googleApi } from "../../../googleApi";
-
-
 
 const Map = () => {
-    const data = useAppStore((state) => state.setIpDomainGeoData);
-    // console.log(data);
-    const [latlng, setLatlng] = useState("");
-    const loading = useAppStore((state) => state.loading);
-    const setLoading = useAppStore((state) => state.setLoading);
-    // const [position, setPosition] = useState(null);
-
-    useEffect(() => {
-        if (loading && data) {
-            getLatLng(data.country, data.region)
-                .then((result) => {
-                    const newLatlng = {
-                        lat: result.data.features[0].properties.lat,
-                        lng: result.data.features[0].properties.lon,
-                    };
-                    setLatlng(newLatlng);
-                })
-                .catch((e) => {
-                    console.log("error", e);
-                });
-        }
-
-        return () => {
-            setLoading(false);
-        };
-    }, [data, loading]);
-
+    const latlng = useAppStore((state) => state.latlng);
+    if (!latlng) return <div>Loading...</div>;
     return (
         <Box bgcolor={"lightgreen"} height={"55vh"}>
             {latlng ? (
