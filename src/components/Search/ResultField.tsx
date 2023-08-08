@@ -1,4 +1,5 @@
 import { Stack, Typography } from "@mui/material";
+import { useEffect, useRef } from "react";
 
 interface Props {
     resultText: {
@@ -8,6 +9,20 @@ interface Props {
 }
 
 const ResultField: React.FC<Props> = (props) => {
+    const body1Ref = useRef("");
+    // console.log(body1Ref.current);
+    const handleResize = (e) => {
+        // console.log(e);
+        console.log(body1Ref.current.getClientBoundingRect());
+    };
+    useEffect(() => {
+        window.addEventListener("resize", (e) => handleResize(e));
+
+        return () => {
+            window.removeEventListener("resize", (e) => handleResize(e));
+        };
+    }, []);
+
     return (
         <Stack
             sx={{
@@ -29,10 +44,13 @@ const ResultField: React.FC<Props> = (props) => {
                 {props.resultText.header}
             </Typography>
             <Typography
+                ref={body1Ref}
                 sx={{
                     fontSize: { xs: "1.4rem", md: "1.8rem" },
                     fontWeight: "500",
                     minHeight: "3rem",
+                    textAlign: { xs: "center", md: "start" },
+                    overflowWrap: "break-word",
                 }}
                 variant="body1"
             >
