@@ -16,7 +16,6 @@ function App() {
     useEffect(() => {
         async function getAPIData() {
             const geoData = await getGeoData(input);
-            console.log(geoData.data);
             setIpDomainGeoData({
                 ip: geoData.data.ip,
                 country: geoData.data.location.country,

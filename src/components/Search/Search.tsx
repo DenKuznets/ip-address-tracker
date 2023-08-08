@@ -1,11 +1,8 @@
 import { Stack, Typography } from "@mui/material";
 import IPInput from "./IPInput";
 import SearchResult from "./SearchResult";
-import { useAppStore } from "../../AppStore";
 
 const Search = () => {
-    const data = useAppStore((state) => state.ipDomainGeoData);
-    console.log('data in Search', data);
     return (
         <Stack
             sx={{

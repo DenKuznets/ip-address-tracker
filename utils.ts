@@ -41,7 +41,6 @@ export const theme = createTheme({
 });
 
 export const getLatLng = (country: string, region: string) => {
-    console.log(country, region);
 
     return axios.get(
         `https://api.geoapify.com/v1/geocode/search?text=${country},${region}&apiKey=${googleApi}`

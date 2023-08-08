@@ -1,9 +1,13 @@
 import { Box, Stack } from "@mui/material";
-import { MapContainer, TileLayer } from "react-leaflet";
+import { MapContainer, TileLayer, useMapEvents } from "react-leaflet";
 import { useAppStore } from "../../AppStore";
+import LocationMarker from "./LocationMarker";
 
 const Map = () => {
     const latlng = useAppStore((state) => state.latlng);
+    // console.log(latlng);
+    
+
     if (!latlng) return <div>Loading...</div>;
     return (
         <Box bgcolor={"lightgreen"} height={"55vh"}>
@@ -19,7 +23,7 @@ const Map = () => {
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    {/* <LocationMarker /> */}
+                    <LocationMarker />
                 </MapContainer>
             ) : (
                 <Stack
