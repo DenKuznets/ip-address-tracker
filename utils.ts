@@ -1,14 +1,5 @@
 import { createTheme } from "@mui/material";
 import axios, { AxiosError } from "axios";
-import { googleApi } from "./googleApi";
-
-export const mockData = {
-    ip: "loading",
-    country: "loading",
-    region: "loading",
-    timezone: "loading",
-    isp: "loading",
-};
 
 // get local data
 // const getData = () => axios.get("http://localhost:3000/data");
@@ -17,7 +8,7 @@ export const mockData = {
 export const getGeoData = async (input: string) => {
     try {
         return await axios.get(
-            `https://geo.ipify.org/api/v2/country?apiKey=at_z9AppVjUfNvHRixRz1uUngxUy6A1h&ipAddress=${input}&domain=${input}`
+            `https://geo.ipify.org/api/v2/country,city?apiKey=at_z9AppVjUfNvHRixRz1uUngxUy6A1h&ipAddress=${input}&domain=${input}`
         );
     } catch (e) {
         if (e instanceof AxiosError) {
@@ -39,9 +30,3 @@ export const theme = createTheme({
         },
     },
 });
-
-export const getLatLng = (region: string, country: string) => {
-    return axios.get(
-        `https://api.geoapify.com/v1/geocode/search?text=${country},${region}&apiKey=${googleApi}`
-    );
-};

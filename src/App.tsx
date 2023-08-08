@@ -3,7 +3,7 @@ import BlueBox from "./components/BlueBox";
 import Map from "./components/Map/Map";
 import Search from "./components/Search/Search";
 import { useEffect } from "react";
-import { getGeoData, getLatLng, theme } from "../utils";
+import { getGeoData, theme } from "../utils";
 import { useAppStore } from "./AppStore";
 
 function App() {
@@ -11,7 +11,6 @@ function App() {
     const setLoading = useAppStore((state) => state.setLoading);
     const input = useAppStore((state) => state.input);
     const setIpDomainGeoData = useAppStore((state) => state.setIpDomainGeoData);
-    const setLatlng = useAppStore((state) => state.setLatlng);
 
     useEffect(() => {
         async function getAPIData() {
@@ -22,15 +21,8 @@ function App() {
                 region: geoData.data.location.region,
                 timezone: geoData.data.location.timezone,
                 isp: geoData.data.isp,
-            });
-            const latlangData = await getLatLng(
-                geoData.data.location.region,
-                geoData.data.location.country,
-            );
-            // console.log(latlangData);
-            setLatlng({
-                lat: latlangData.data.features[0].properties.lat,
-                lng: latlangData.data.features[0].properties.lon,
+                lat: geoData.data.location.lat,
+                lng: geoData.data.location.lng,
             });
         }
         if (loading) {

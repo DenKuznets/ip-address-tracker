@@ -1,9 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Marker, Popup, useMap } from "react-leaflet";
 import { useAppStore } from "../../AppStore";
 
 function LocationMarker() {
-    const latlng = useAppStore((state) => state.latlng);
+    const geoData = useAppStore((state) => state.geoData);
+    const latlng = useMemo(
+        () => ({
+            lat: geoData.lat,
+            lng: geoData.lng,
+        }),
+        [geoData]
+    );
     const [position, setPosition] = useState(latlng);
     const map = useMap();
 
