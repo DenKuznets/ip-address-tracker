@@ -1,9 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Marker, Popup, useMap } from "react-leaflet";
 import { useAppStore } from "../../AppStore";
 
 function LocationMarker() {
     const geoData = useAppStore((state) => state.geoData);
+    
     const latlng = useMemo(
         () => ({
             lat: geoData.lat,
@@ -21,6 +22,7 @@ function LocationMarker() {
 
         // перемещение с анимацией перелета
         map.flyTo(latlng);
+        
     }, [latlng, map]);
 
     return position === null ? null : (

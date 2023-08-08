@@ -1,21 +1,14 @@
 import { createTheme } from "@mui/material";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 // get local data
 // const getData = () => axios.get("http://localhost:3000/data");
 
 // get data from geo API
-export const getGeoData = async (input: string) => {
-    try {
-        return await axios.get(
-            `https://geo.ipify.org/api/v2/country,city?apiKey=at_z9AppVjUfNvHRixRz1uUngxUy6A1h&ipAddress=${input}&domain=${input}`
-        );
-    } catch (e) {
-        if (e instanceof AxiosError) {
-            console.log("error", e);
-            // return e.message;
-        }
-    }
+export const getGeoData = (input: string) => {
+    return axios.get(
+        `https://geo.ipify.org/api/v2/country,city?apiKey=at_z9AppVjUfNvHRixRz1uUngxUy6A1h&ipAddress=${input}&domain=${input}`
+    );
 };
 
 export const theme = createTheme({
@@ -30,3 +23,13 @@ export const theme = createTheme({
         },
     },
 });
+
+export const errorMessage = (error: string) => {
+    switch (true) {
+        case error === "ERR_BAD_REQUEST":
+            return "Domain/IP not found";
+
+        default:
+            return "Oops, there is an error. Please try again later.";
+    }
+};

@@ -1,17 +1,30 @@
-import { IconButton, InputBase, Stack } from "@mui/material";
+import {
+    Alert,
+    IconButton,
+    InputBase,
+    Snackbar,
+    Stack,
+} from "@mui/material";
 import { useAppStore } from "../../AppStore";
 import { useRef } from "react";
+import { errorMessage } from "../../../utils";
 
 const IPInput = () => {
     const setInput = useAppStore((state) => state.setInput);
     const setLoading = useAppStore((state) => state.setLoading);
     const inputBaseRef = useRef<HTMLInputElement>(null);
+    const error = useAppStore((state) => state.error);
+    const setError = useAppStore((state) => state.setError);
     const sendData = () => {
         const input = inputBaseRef?.current?.querySelector("input");
         if (input) {
             setInput(input.value);
             setLoading(true);
         }
+    };
+
+    const handleClose = () => {
+        setError("");
     };
 
     return (
@@ -23,6 +36,7 @@ const IPInput = () => {
             justifyContent={"center"}
             width={"100%"}
             direction={"row"}
+            position={"relative"}
         >
             <InputBase
                 onKeyDown={(e) => {
@@ -58,6 +72,30 @@ const IPInput = () => {
             >
                 <img src="./images/icon-arrow.svg" />
             </IconButton>
+            <Snackbar
+                open={!!error}
+                autoHideDuration={6000}
+                onClose={handleClose}
+                sx={{
+                    position: "absolute",
+                    top: "110%",
+                    left: '0 !important',
+                    width: "100%",
+                }}
+            >
+                <Alert
+                    sx={{
+                        position: "absolute",
+                        top: "100%",
+                        left: 0,
+                        width: "100%",
+                    }}
+                    onClose={handleClose}
+                    severity="error"
+                >
+                    {errorMessage(error)}
+                </Alert>
+            </Snackbar>
         </Stack>
     );
 };
