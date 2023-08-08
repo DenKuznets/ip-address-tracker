@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { googleApi } from "./googleApi";
 
 export const mockData = {
@@ -14,25 +14,17 @@ export const mockData = {
 // const getData = () => axios.get("http://localhost:3000/data");
 
 // get data from geo API
-export const getGeoData = (input: string) => {
-    const regexDomain =
-        /^((?!-))(xn--)?[a-z0-9][a-z0-9-_]{0,61}[a-z0-9]{0,1}.(xn--)?([a-z0-9-]{1,61}|[a-z0-9-]{1,30}.[a-z]{2,})$/;
-
-    return regexDomain.test(input)
-        ? axios
-              .get(
-                  `https://geo.ipify.org/api/v2/country?apiKey=at_z9AppVjUfNvHRixRz1uUngxUy6A1h&domain=${input}`
-              )
-              .catch((e) => {
-                  console.log("error", e.code, "no such domain");
-              })
-        : axios
-              .get(
-                  `https://geo.ipify.org/api/v2/country?apiKey=at_z9AppVjUfNvHRixRz1uUngxUy6A1h&ipAddress=${input}`
-              )
-              .catch((e) => {
-                  console.log("error", e.code, "no such ip");
-              });
+export const getGeoData = async (input: string) => {
+    try {
+        return await axios.get(
+            `https://geo.ipify.org/api/v2/country?apiKey=at_z9AppVjUfNvHRixRz1uUngxUy6A1h&ipAddress=${input}&domain=${input}`
+        );
+    } catch (e) {
+        if (e instanceof AxiosError) {
+            console.log("error", e);
+            // return e.message;
+        }
+    }
 };
 
 export const theme = createTheme({
