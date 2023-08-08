@@ -1,3 +1,2 @@
-ошибки typescript
-ошибки api Запросов
-ip regex
+remove map zoom buttons
+set map flyto slightly higher than marker position

@@ -13,7 +13,7 @@ const BlueBox = () => {
                 },
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
-                height: "45vh",
+                height: { xs: "45vh", md:'42vh' },
             }}
         />
     );

@@ -9,7 +9,7 @@ const SearchResult = () => {
         <Stack
             sx={{
                 borderRadius: "1rem",
-                gap: { xs: "1.05rem", md: "3rem" },
+                gap: { xs: "0", md: "3rem" },
                 p: { xs: 3, sm: 4.55 },
                 alignItems: "center",
                 maxWidth: { sm: "35rem", md: "70rem" },

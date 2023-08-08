@@ -11,11 +11,11 @@ export interface GeoDataType {
 }
 
 const initialGeoData = {
-    ip: "1.1.1.1",
-    country: "Russia",
-    region: "Moscow",
-    timezone: "+03:00",
-    isp: "none",
+    ip: "loading",
+    country: "loading",
+    region: "loading",
+    timezone: "loading",
+    isp: "loading",
     lat: 55.751244,
     lng: 37.618423,
 };

@@ -6,11 +6,16 @@ import LocationMarker from "./LocationMarker";
 const Map = () => {
     const geoData = useAppStore((state) => state.geoData);
     return (
-        <Box bgcolor={"lightgreen"} height={"55vh"}>
+        <Box
+            sx={{
+                height: { xs: "55vh", md: "58vh" },
+            }}
+            bgcolor={"lightgreen"}
+        >
             {geoData ? (
                 <MapContainer
                     // center={{ lat: 51.505, lng: -0.09 }}
-                    center={{lat: geoData.lat, lng: geoData.lng}}
+                    center={{ lat: geoData.lat, lng: geoData.lng }}
                     zoom={13}
                     scrollWheelZoom={true}
                     style={{ height: "100%" }}
