@@ -1,1 +1,1 @@
-remove map zoom buttons
+
