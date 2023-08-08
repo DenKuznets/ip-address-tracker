@@ -27,7 +27,7 @@ function App() {
                 geoData.data.location.region,
                 geoData.data.location.country,
             );
-            console.log(latlangData);
+            // console.log(latlangData);
             setLatlng({
                 lat: latlangData.data.features[0].properties.lat,
                 lng: latlangData.data.features[0].properties.lon,
