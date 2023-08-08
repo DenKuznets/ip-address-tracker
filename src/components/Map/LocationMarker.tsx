@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Marker, Popup, useMap } from "react-leaflet";
+import { Marker, useMap } from "react-leaflet";
 import { useAppStore } from "../../AppStore";
 import L from "leaflet";
 
@@ -31,10 +31,7 @@ function LocationMarker() {
     }, [latlng, map]);
 
     return position === null ? null : (
-        <Marker
-            icon={icon}
-            position={position}>
-        </Marker>
+        <Marker icon={icon} position={position}></Marker>
     );
 }
 
