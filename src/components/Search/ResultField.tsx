@@ -16,14 +16,14 @@ const ResultField: React.FC<Props> = (props) => {
                     md: "flex-start",
                 },
                 gap: "0.1rem",
-                flexBasis: '25%',
+                flexBasis: "25%",
             }}
             bgcolor={""}
         >
             <Typography
                 sx={{
                     fontSize: { xs: "0.7rem", md: "0.83rem" },
-                    wordBreak: 'break-all',
+                    wordBreak: "break-all",
                     fontWeight: "700",
                     letterSpacing: "1.5px",
                 }}
