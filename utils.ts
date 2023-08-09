@@ -12,6 +12,15 @@ export const getGeoData = (input: string) => {
 };
 
 export const theme = createTheme({
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: `
+        body {
+          overflow: hidden;
+        }
+      `,
+        },
+    },
     typography: {
         fontFamily: "'Rubik', sans-serif",
         h1: {

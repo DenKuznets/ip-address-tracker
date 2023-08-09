@@ -8,9 +8,10 @@ const Map = () => {
     return (
         <Box
             sx={{
-                height: { xs: "55vh", md: "58vh" },
+                height: { xs: "55vh", md: "100%" },
             }}
             bgcolor={"lightgreen"}
+            overflow={'hidden'}
         >
             {geoData ? (
                 <MapContainer
@@ -20,6 +21,7 @@ const Map = () => {
                     zoomControl={false}
                     scrollWheelZoom={true}
                     style={{ height: "100%" }}
+                    
                 >
                     <TileLayer
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
