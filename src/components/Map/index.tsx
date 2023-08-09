@@ -8,7 +8,7 @@ const Map = () => {
     return (
         <Box
             sx={{
-                height: { xs: "55vh", md: "100%" },
+                height: { xs: "60vh", md: "58vh" },
             }}
             bgcolor={"lightgreen"}
             overflow={'hidden'}

@@ -42,9 +42,7 @@ function App() {
         };
     }, [input, loading]);
     return (
-        <Box
-            // overflow={'hidden'}
-            height={'100vh'}>
+        <Box>
             <ThemeProvider theme={theme}>
                 <CssBaseline />
                 <BlueBox />

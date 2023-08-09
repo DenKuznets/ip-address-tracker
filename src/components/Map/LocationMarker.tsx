@@ -28,7 +28,7 @@ function LocationMarker() {
         // map.setView({ ...latlng, lat: latlng.lat + 0.038 })
 
         // перемещение с анимацией перелета
-        map.flyTo({ ...latlng, lat: latlng.lat + 0.03 });
+        map.flyTo({ ...latlng, lat: latlng.lat + 0.038 });
     }, [latlng, map]);
 
     return position === null ? null : (
