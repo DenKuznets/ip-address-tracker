@@ -41,7 +41,7 @@ const SearchResult = () => {
             <ResultField
                 resultText={{
                     header: "TIMEZONE",
-                    text: data.timezone,
+                    text: `UTC ${data.timezone}`,
                 }}
             />
             <ResultField

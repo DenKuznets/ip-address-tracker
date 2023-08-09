@@ -17,7 +17,6 @@ const ResultField: React.FC<Props> = (props) => {
                 },
                 gap: "0.1rem",
                 flexBasis: '25%',
-                // overflow:'hidden',
             }}
             bgcolor={""}
         >
@@ -39,7 +38,7 @@ const ResultField: React.FC<Props> = (props) => {
                     fontWeight: "500",
                     minHeight: "3rem",
                     textAlign: { xs: "center", md: "start" },
-                    overflowWrap: "break-word",
+                    wordBreak: "break-word",
                 }}
                 variant="body1"
             >
