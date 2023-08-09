@@ -21,7 +21,7 @@ function LocationMarker() {
     );
     const [position, setPosition] = useState(latlng);
     const map = useMap();
-    
+
     useEffect(() => {
         setPosition(latlng);
         // мгновенное перемещение
