@@ -36,9 +36,8 @@ export const useAppStore = create<AppState>()((set) => ({
     input: "",
     loading: true,
     error: "",
-    setGeoData: (newGeoData) =>
-        set((state) => ({ ...state, geoData: newGeoData })),
-    setInput: (newInput) => set((state) => ({ ...state, input: newInput })),
-    setLoading: (bool) => set((state) => ({ ...state, loading: bool })),
-    setError: (code) => set((state) => ({ ...state, error: code })),
+    setGeoData: (newGeoData) => set({ geoData: newGeoData }),
+    setInput: (newInput) => set({ input: newInput }),
+    setLoading: (bool) => set({ loading: bool }),
+    setError: (code) => set({ error: code }),
 }));
